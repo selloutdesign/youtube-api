@@ -11,6 +11,12 @@ $(document).ready(function() {
     	$('#modal1').openModal();
     }); 
 
+    $('.modal-trigger-dyn').on('click','modal-section', function(event) {
+    	// event.preventDefault();
+    	/* Act on the event */
+    	$('#modal2').openModal();
+    }); 
+
   $.getJSON('https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBqXp0Uo2ktJcMRpL_ZwF5inLTWZfsCYqY', function(data){
     showResults(data);
   });
@@ -63,14 +69,14 @@ function showResults(results){
 		              
 		            html+= '</div>';
 		            html+= '<div class="card-action">';
-		              html += '<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>';
+		              html += '<a class="waves-effect waves-light btn modal-trigger-dyn" href="#modal2">Modal</a>';
 		              html+= '<a href="https://www.youtube.com/watch?v=' + val.id.videoId + '" target="_blank">Watch</a>';
 		            html+= '</div>';
 		          html+= '</div>';
 		        html+= '</div>';
 
 		        // Modal Results
-		                shtml += '<div id="modal1" class="modal bottom-sheet">';
+		                shtml += '<div id="modal2" class="modal bottom-sheet">';
 				          shtml += '<div class="modal-content">';
 				            shtml += '<h4>Modal Header</h4>';
 				            shtml += '<p>A bunch of text</p>';
@@ -90,7 +96,7 @@ function showResults(results){
 		var params ={
 			part: 'snippet',
 			key: 'AIzaSyCugrTGK0bxpfOkwjMsEE7P1p3stAl7G3Y',
-			maxResults: 9,
+			maxResults: 1,
 			q: searchTerm
 		};
 		url = 'https://www.googleapis.com/youtube/v3/search';
